@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Binary Search Tree</title>
+  </head>
+  <body>
+    <script
+      type="text/javascript"
+      src="http://students.engr.scu.edu/~adiaztos/resources/testBst.js"
+    ></script>
+    <!-- JavaScript under -->
+    <script>
+      //node def
+      function Node(nodeVal) {
+        this.value = nodeVal;
+        this.leftChild = null;
+        this.rightChild = null;
+        this.duplicateCount = 0;
+      }
+
+      //bst def
+      function BinarySearchTree() {
+        this.root = null;
+      }
+
+      BinarySearchTree.prototype.insert = function(nodeVal) {
+        //currentParent will start as the rootNode then be reassigned as we find its place in the tree
+        var rootNode = this.root;
+        var newNode = new Node(nodeVal);
+
+        //checking the case that the root node is empty
+        if (this.root == null) {
+          //console.log("in");
+          this.root = newNode;
+          //console.log(this.root)
+          return;
+        }
+
+        //if root node is not empty we need to find its place in the tree
+        //console.log(rootNode);
+        var currentParent = rootNode;
+        //console.log(currentParent);
+        while (1) {
+          if (newNode.value == currentParent.value) {
+            //console.log("duplicate ");
+            currentParent.duplicateCount++;
+            break;
+          } else if (newNode.value < currentParent.value) {
+            //console.log("value = lesl then parent val");
+            if (currentParent.leftChild == null) {
+              //console.log("parent left child open for use");
+              currentParent.leftChild = newNode;
+              break;
+            } else {
+              //console.log("parent left child NOT open for use");
+              currentParent = currentParent.leftChild;
+              continue;
+            }
+          } else {
+            if (currentParent.rightChild == null) {
+              //console.log("parent right child open for use");
+              currentParent.rightChild = newNode;
+              break;
+            } else {
+              //console.log("parent right child NOT open for use");
+              currentParent = currentParent.rightChild;
+              continue;
+            }
+          }
+        }
+      };
+      //testing insert func below
+      // BinarySearchTree.prototype.insert(10);
+      // BinarySearchTree.prototype.insert(11);
+      // BinarySearchTree.prototype.insert(1);
+
+      BinarySearchTree.prototype.Search = function(nodeVal) {
+        var currentNode = this.root;
+        var searchedVal = nodeVal;
+        //console.log(currentNode);
+        if (this.root == null) return;
+
+        while (1) {
+          if (searchedVal == currentNode.value) {
+            //console.log("found node with value: ", currentNode.value);
+            return currentNode;
+          } else if (currentNode.value < searchedVal)
+            currentNode = currentNode.leftChild;
+          else currentNode = currentNode.rightChild;
+
+          return;
+        }
+      };
+
+      BinarySearchTree.prototype.Search(10);
+
+      //!NOTE: remember to ask him if doing this is okay... not passing a function as a parameter to our prototype function
+      function inOrderTrav(fn, node) {
+        console.log(node);
+        if (node !== null) {
+          inOrderTrav(node.leftChild);
+          fn(node.value);
+          inOrderTrav(node.rightChild);
+        }
+      }
+
+      BinarySearchTree.prototype.inorder = function(fn) {
+        inOrderTrav(fn, this.root);
+      };
+
+      var bst = new BinarySearchTree();
+
+      testBst(bst);
+    </script>
+  </body>
+</html>

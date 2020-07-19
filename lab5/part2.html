@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lab 4 - Part 2</title>
+    <style>
+      #resultDiv {
+        visibility: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Calculator</h1>
+    <label>Input #1 <input id="input1" type="text"/></label>
+    <label>Input #2 <input id="input2" type="text"/></label>
+    <input type="button" value="add" onclick="add()" />
+    <input type="button" value="subtract" onclick="sub()" />
+    <input type="button" value="multiply" onclick="mult()" />
+    <input type="button" value="divide" onclick="div()" />
+    <div id="resultDiv">
+      Operator: <span id="operator"></span><br />Result:<span
+        id="result"
+      ></span>
+      <br />
+      <input type="button" value="clear" onclick="clearing()" />
+    </div>
+    <script>
+      //need 2 global variables here bc we want every function to be able to access it
+      var a = 0.0;
+      var b = 0.0;
+
+      function getInput() {
+        //assigning the new values
+        a = document.getElementById("input1").value;
+        b = document.getElementById("input2").value;
+        a = parseInt(a, 10);
+        b = parseInt(b, 10);
+      }
+
+      function add() {
+        getInput(); //refreshing input
+        var result = a + b;
+        document.getElementById("result").innerHTML = result;
+        document.getElementById("operator").innerHTML = "add";
+        document.getElementById("resultDiv").style.visibility = "visible";
+      }
+      function sub() {
+        getInput(); //refreshing input
+        var result = a - b;
+        document.getElementById("result").innerHTML = result;
+        document.getElementById("operator").innerHTML = "subtract";
+        document.getElementById("resultDiv").style.visibility = "visible";
+      }
+      function mult() {
+        getInput(); //refreshing input
+        var result = a * b;
+        document.getElementById("result").innerHTML = result;
+        document.getElementById("operator").innerHTML = "multiply";
+        document.getElementById("resultDiv").style.visibility = "visible";
+      }
+      function div() {
+        getInput(); //refreshing input
+        var result = a / b;
+        document.getElementById("result").innerHTML = result;
+        document.getElementById("operator").innerHTML = "divide";
+        document.getElementById("resultDiv").style.visibility = "visible";
+      }
+      function clearing() {
+        console.log("clear");
+        document.getElementById("input1").value = " ";
+        document.getElementById("input2").value = " ";
+        document.getElementById("resultDiv").style.visibility = "hidden";
+        document.getElementById("result").innerHTML = " ";
+        document.getElementById("operator").innerHTML = " ";
+      }
+    </script>
+  </body>
+</html>

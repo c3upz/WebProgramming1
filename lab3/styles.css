@@ -1,0 +1,112 @@
+* {
+  box-sizing: content-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #322e2f;
+  color: white;
+  font-family: "Courier New", Courier, monospace;
+}
+
+body {
+  /* using flexbox */
+  display: flex;
+  /* aligns 3 items (navBar, content, footer) on top of eachother */
+  flex-direction: column;
+}
+
+.content {
+  /* extends the content section to fit the body */
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  background-color: darkblue;
+}
+
+.content > div {
+  flex-grow: 1;
+}
+
+.row {
+  padding: 10px;
+  display: inline-flex;
+}
+
+.col {
+  padding: 10px;
+}
+
+.left-col {
+  width: 25%;
+  padding: 10px;
+}
+
+.right-col {
+  width: 75%;
+  padding: 10px;
+}
+
+.mainNav {
+  padding: 20px;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+}
+
+.rightButtons {
+  display: flex;
+}
+
+.mainNav li {
+  padding: 10px;
+}
+
+ul:first-child {
+  color: blue;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+}
+
+nav a:hover {
+  color: #d9138a;
+}
+
+footer {
+  width: 100%;
+}
+
+/* color classes below here*/
+.primary {
+  background-color: #41aa4a;
+}
+
+.secondary {
+  background-color: #12a4d9;
+}
+
+.accent {
+  background: #d9138a;
+}
+
+.primary-text {
+  color: white;
+}
+
+.secondary-text {
+  color: #e2d810;
+}
+
+.accent-text {
+  color: #d9138a;
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Functions</title>
+  </head>
+  <body>
+    <script>
+      /* Test data */
+      var minArray = [5, 4, 3, 2, 1];
+      var str1 = "racecar";
+      var str2 = "madame";
+      var str3 = "palindrome";
+      var occurArray = ["one", "two", "two", "three", "three", "three"];
+
+      /*
+           	1. Write a function to find the min in the given array
+           */
+      function findMin(arr) {
+        var i = 0;
+        var min = arr[i];
+
+        for (let i = 1; i < arr.length; i++) {
+          if (arr.indexOf(i) < min) {
+            min = arr.indexOf(i);
+          }
+        }
+        return min;
+      }
+
+      // call and log the result
+      console.log(findMin(minArray));
+
+      /*
+           	2. Write a function that returns true if a string is a palindrome, otherwise return false
+           */
+      function isPalindrome(str) {
+        var isPal = false;
+        var rStr = "";
+
+        for (var i = str.length - 1; i >= 0; i--) {
+          rStr += str[i];
+        }
+
+        if (str.localeCompare(rStr) == 0) {
+          return true;
+        }
+        return false;
+      }
+
+      console.log(isPalindrome(str2)); //should return false
+      console.log(isPalindrome(str1)); //should return true
+      /*
+           	3. Write a function that returns the string that occurs the most in an array
+           */
+      function maxOccurs(arr) {
+        if (arr.length == 0) return null;
+        var wordCountList = {};
+        var max = arr[0],
+          maxCount = 1;
+        for (var i = 0; i < arr.length; i++) {
+          var tempWord = arr[i];
+          if (wordCountList[tempWord] == null) wordCountList[tempWord] = 1;
+          else wordCountList[tempWord]++;
+
+          if (wordCountList[tempWord] > maxCount) {
+            max = tempWord;
+            maxCount = wordCountList[tempWord];
+          }
+        }
+        return max;
+      }
+
+      console.log(maxOccurs(occurArray));
+    </script>
+  </body>
+</html>

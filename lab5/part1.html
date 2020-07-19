@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lab 4 - Part 1</title>
+    <style>
+      p[id] {
+        height: 100px;
+      }
+
+      .flashy {
+        animation: blinker 1s linear infinite;
+      }
+
+      @keyframes blinker {
+        50% {
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <label>My Input: <input type="text" id="myInput"/></label
+    ><button type="button" onclick="changeText()">Submit</button>
+    <p>All UpperCase</p>
+    <hr />
+    <p id="allUpper"></p>
+    <p>All Lowercase</p>
+    <hr />
+    <p id="allLower"></p>
+    <p>Red Text</p>
+    <hr />
+    <p id="redText"></p>
+    <p>Flashy Text</p>
+    <hr />
+    <p id="flashyText"></p>
+    <script>
+      function changeText() {
+        var input = document.getElementById("myInput").value; //accessing the value of 'myInput' by selecting document then an Id
+
+        var upper = input.toUpperCase(); //setting upper to equal the desired result
+        document.getElementById("allUpper").innerHTML = upper; //setting elemtns with id "allUpper" to display var upper
+
+        var lower = input.toLowerCase();
+        document.getElementById("allLower").innerHTML = lower;
+
+        document.getElementById("redText").innerHTML = input;
+        document.getElementById("redText").style.color = "red";
+
+        document.getElementById("flashyText").innerHTML = input;
+        document.getElementById("flashyText").className = "flashy"; //adding className "flashy" allows for the css selector to apply to this text
+      }
+    </script>
+  </body>
+</html>
